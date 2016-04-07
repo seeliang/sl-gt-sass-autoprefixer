@@ -1,6 +1,6 @@
 {
   "name": "sl-gt-sass-autoprefixer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "gulp task for sass compile with autoprefixer",
   "dependencies": {
     "gulp": "^3.8.11",
