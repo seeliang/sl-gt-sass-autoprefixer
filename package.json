@@ -2,7 +2,7 @@
   "name": "sl-gt-sass-autoprefixer",
   "version": "1.0.0",
   "description": "gulp task for sass compile with autoprefixer",
-  "devDependencies": {
+  "dependencies": {
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-import-css": "^0.1.2",
