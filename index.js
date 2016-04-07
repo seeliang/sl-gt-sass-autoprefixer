@@ -1,7 +1,7 @@
 var gulp = require(gulp),
   sass = require('gulp-sass'),
   importCss = require('gulp-import-css'),
-  minifyCss = require('gulp-minify-css'),
+  cleanCss = require('gulp-clean-css'),
   autoprefixer = require('gulp-autoprefixer'),
   rename = require('gulp-rename'),
   bulkSass = require('gulp-sass-bulk-import');
@@ -35,7 +35,7 @@ module.exports = function(gulp) {
 
   gulp.task('min-css', function(){
     return gulp.src('build/css/main.css')
-      .pipe(minifyCss({compatibility: 'ie8'}))
+      .pipe(cleanCss({compatibility: 'ie8'}))
       .pipe(rename({
               suffix: '-min'
           }))
