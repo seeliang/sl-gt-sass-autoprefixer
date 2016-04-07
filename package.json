@@ -1,0 +1,33 @@
+{
+  "name": "sl-gt-sass-autoprefixer",
+  "version": "1.0.0",
+  "description": "gulp task for sass compile with autoprefixer",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-import-css": "^0.1.2",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
+    "gulp-sass-bulk-import": "^1.0.1",
+    "gulp-watch": "^4.2.4"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sihui liang me@sihuiliang.com",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seeliang/sl-gt-sass-autoprefixer.git"
+  },
+  "keywords": [
+    "gulp",
+    "task"
+  ],
+  "bugs": {
+    "url": "https://github.com/seeliang/sl-gt-sass-autoprefixer/issues"
+  },
+  "homepage": "https://github.com/seeliang/sl-gt-sass-autoprefixer#readme"
+}
