@@ -1,12 +1,18 @@
-var gulp = require(gulp),
-  sass = require('gulp-sass'),
-  importCss = require('gulp-import-css'),
-  cleanCss = require('gulp-clean-css'),
-  autoprefixer = require('gulp-autoprefixer'),
-  rename = require('gulp-rename'),
-  bulkSass = require('gulp-sass-bulk-import');
 
 module.exports = function(gulp) {
+  var sass = require('gulp-sass'),
+    importCss = require('gulp-import-css'),
+    cleanCss = require('gulp-clean-css'),
+    autoprefixer = require('gulp-autoprefixer'),
+    rename = require('gulp-rename'),
+    path = require('path'),
+    outputName = 'main',
+    sassFolder = 'assets/scss',
+    cssFolder = 'build/css',
+    sassPath = path.resolve(__dirname, '../../' + sassFolder),
+    cssPath = path.resolve(__dirname, '../../' + cssFolder),
+    bulkSass = require('gulp-sass-bulk-import');
+
   function resumeError (error) {
     // http://stackoverflow.com/a/23973536
     console.log(error.toString());
@@ -15,31 +21,31 @@ module.exports = function(gulp) {
 
   gulp.task('css', function() {
       return gulp
-              .src('assets/scss/main.scss')
+              .src(sassPath + '/' + outputName + '.scss')
               .pipe(bulkSass())
               .pipe(
                   sass({
-                      includePaths: ['assets/scss']
+                      includePaths: [sassPath]
                   }))
                   .on('error', resumeError)
               .pipe(autoprefixer({
                 "autoprefixer": {"browsers": ["> 2%"]}
                 }))
               .pipe(importCss())
-              .pipe( gulp.dest('./build/css/') );
+              .pipe( gulp.dest(cssPath) );
   });
 
   gulp.task('watch', function() {
-    gulp.watch(['assets/scss/**/*.scss'],['css']);
+    gulp.watch([sassPath + '/**/*.scss'],['css']);
   });
 
   gulp.task('min-css', function(){
-    return gulp.src('build/css/main.css')
+    return gulp.src(cssPath + '/' + outputName + '.css')
       .pipe(cleanCss({compatibility: 'ie8'}))
       .pipe(rename({
               suffix: '-min'
           }))
-      .pipe(gulp.dest('build/css'));
+      .pipe(gulp.dest(cssPath));
   });
 
   gulp.task('sass-watch', ['css','watch']);
