@@ -24,7 +24,7 @@ module.exports = function(gulp, options) {
     'Watching folder <' + sassPath + '>'
   + '\n' + 'Css output file <' + cssPath + '/'+ outputName +'.css>'
   + '\n' + 'autoprefixer set <' + JSON.stringify(prefixerSet) + '>'
-  + '\n' + 'cleanCssSet set <' + JSON.stringify(cleanCssSet) + '>'
+  + '\n' + 'cleanCss set <' + JSON.stringify(cleanCssSet) + '>'
   );
 
   function resumeError (error) {
