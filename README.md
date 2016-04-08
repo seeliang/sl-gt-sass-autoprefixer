@@ -37,7 +37,7 @@ require('sl-gt-sass-autoprefixer')(gulp, options);
 - cssFolder: set output file folder `default:build/css`
 - outputName: set output css file name `default:main`
 - prefixerSet: [More info](https://github.com/ai/browserslist) `default:{"browsers": ["> 2%"]}`
-- clearCssSet: [More info](https://github.com/jakubpawlowicz/clean-css#how-to-use-clean-css-api) `default:{compatibility: 'ie9'}`
+- clearCssSet: [More info](https://github.com/jakubpawlowicz/clean-css#how-to-use-clean-css-api) `default:{}`
 
 #### Watch
 ```sh

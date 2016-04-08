@@ -15,7 +15,7 @@ module.exports = function(gulp, options) {
     prefixerSet = (typeof options.prefixerSet !== 'undefined')
     ? options.prefixerSet : {"browsers": ["> 2%"]},
     cleanCssSet = (typeof options.cleanCssSet !== 'undefined')
-    ? options.cleanCssSet : {compatibility: 'ie9'},
+    ? options.cleanCssSet : {},
     sassPath = path.resolve(__dirname, '../../' + sassFolder),
     cssPath = path.resolve(__dirname, '../../' + cssFolder),
     bulkSass = require('gulp-sass-bulk-import');
