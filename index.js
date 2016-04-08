@@ -1,17 +1,31 @@
 
-module.exports = function(gulp) {
+module.exports = function(gulp, options) {
   var sass = require('gulp-sass'),
     importCss = require('gulp-import-css'),
     cleanCss = require('gulp-clean-css'),
     autoprefixer = require('gulp-autoprefixer'),
     rename = require('gulp-rename'),
     path = require('path'),
-    outputName = 'main',
-    sassFolder = 'assets/scss',
-    cssFolder = 'build/css',
+    sassFolder = (typeof options.sassFolder !== 'undefined')
+    ? options.sassFolder : 'assets/scss',
+    cssFolder = (typeof options.cssFolder !== 'undefined')
+    ? options.cssFolder : 'build/css',
+    outputName = (typeof options.outputName !== 'undefined')
+    ? options.outputName : 'main',
+    prefixerSet = (typeof options.prefixerSet !== 'undefined')
+    ? options.prefixerSet : {"browsers": ["> 2%"]},
+    cleanCssSet = (typeof options.cleanCssSet !== 'undefined')
+    ? options.cleanCssSet : {compatibility: 'ie9'},
     sassPath = path.resolve(__dirname, '../../' + sassFolder),
     cssPath = path.resolve(__dirname, '../../' + cssFolder),
     bulkSass = require('gulp-sass-bulk-import');
+
+  console.log(
+    'Watching folder <' + sassPath + '>'
+  + '\n' + 'Css output file <' + cssPath + '/'+ outputName +'.css>'
+  + '\n' + 'autoprefixer set <' + JSON.stringify(prefixerSet) + '>'
+  + '\n' + 'cleanCssSet set <' + JSON.stringify(cleanCssSet) + '>'
+  );
 
   function resumeError (error) {
     // http://stackoverflow.com/a/23973536
@@ -21,18 +35,18 @@ module.exports = function(gulp) {
 
   gulp.task('css', function() {
       return gulp
-              .src(sassPath + '/' + outputName + '.scss')
-              .pipe(bulkSass())
-              .pipe(
-                  sass({
-                      includePaths: [sassPath]
-                  }))
-                  .on('error', resumeError)
-              .pipe(autoprefixer({
-                "autoprefixer": {"browsers": ["> 2%"]}
-                }))
-              .pipe(importCss())
-              .pipe( gulp.dest(cssPath) );
+        .src(sassPath + '/' + outputName + '.scss')
+        .pipe(bulkSass())
+        .pipe(
+            sass({
+                includePaths: [sassPath]
+            }))
+            .on('error', resumeError)
+        .pipe(autoprefixer({
+          "autoprefixer": prefixerSet
+          }))
+        .pipe(importCss())
+        .pipe( gulp.dest(cssPath) );
   });
 
   gulp.task('watch', function() {
@@ -41,7 +55,7 @@ module.exports = function(gulp) {
 
   gulp.task('min-css', function(){
     return gulp.src(cssPath + '/' + outputName + '.css')
-      .pipe(cleanCss({compatibility: 'ie8'}))
+      .pipe(cleanCss(cleanCssSet))
       .pipe(rename({
               suffix: '-min'
           }))
