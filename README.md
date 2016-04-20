@@ -12,7 +12,7 @@
     "gulp-watch"
 ```  
 ## Folder structure
-[Sample](https://github.com/seeliang/kickoff/tree/css-sass-autoperfixer)
+[Sample](https://github.com/seeliang/kickoff/tree/scss-autoprefixer)
 ## Usage
 
 ```sh
