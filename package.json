@@ -14,6 +14,7 @@
   },
   "main": "index.js",
   "scripts": {
+    "synclint": "gulp synclint --path sl-fe-lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sihui liang me@sihuiliang.com",
@@ -29,5 +30,9 @@
   "bugs": {
     "url": "https://github.com/seeliang/sl-gt-sass-autoprefixer/issues"
   },
-  "homepage": "https://github.com/seeliang/sl-gt-sass-autoprefixer#readme"
+  "homepage": "https://github.com/seeliang/sl-gt-sass-autoprefixer#readme",
+  "devDependencies": {
+    "sl-fe-lint": "^1.1.0",
+    "sl-gt-synclint": "^1.0.0"
+  }
 }
